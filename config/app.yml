@@ -1,0 +1,5 @@
+mysql:
+  dns: "root:rz,2wVry!QsN@tcp(127.0.0.1:3306)/ginchat?charset=utf8mb4&parseTime=True&loc=Local"
+app:
+  jwtSecret: "test"
+  jwtExpireTime: 30
