@@ -2,7 +2,6 @@ package base
 
 import (
 	"fmt"
-	"ginchat/middlewares/respond"
 	"ginchat/models"
 	"ginchat/service/base"
 	"ginchat/utils"
@@ -24,7 +23,7 @@ type ILoginReq struct {
 func Login(c *gin.Context) {
 	req := &ILoginReq{}
 	if c.ShouldBind(&req) != nil {
-		respond.ServerError(c, "获取参数失败")
+		utils.ServerError(c, "获取参数失败")
 	} else {
 		req.PassWord = utils.Encryption(req.PassWord)
 		user := models.BaseSysUser{UserName: req.UserName, PassWord: req.PassWord}
@@ -33,9 +32,9 @@ func Login(c *gin.Context) {
 		token, err := utils.GenerateToken(user.ID)
 		if err != nil {
 			fmt.Println(err)
-			respond.ServerError(c, "生成token失败")
+			utils.ServerError(c, "生成token失败")
 		} else {
-			respond.Success(c, gin.H{
+			utils.Success(c, gin.H{
 				"token": token,
 			})
 		}
@@ -52,7 +51,7 @@ func CreateUser(c *gin.Context) {
 		Email:    "1103733590@qq.com",
 	}
 	base.CreateUser(&user)
-	respond.Success(c, gin.H{
+	utils.Success(c, gin.H{
 		"data": "成功",
 	})
 }

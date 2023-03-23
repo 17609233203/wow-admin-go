@@ -35,5 +35,5 @@ func InitMySql() {
 	)
 	DB, _ = gorm.Open(mysql.Open(viper.GetString("mysql.dns")), &gorm.Config{Logger: newLogger})
 	DB.AutoMigrate(&models.BaseSysUser{})
-
+	DB.AutoMigrate(&models.BaseSysMenu{})
 }
