@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"github.com/golang-jwt/jwt"
 	"github.com/spf13/viper"
 	"time"
@@ -16,7 +15,6 @@ var jwtSecret = []byte(viper.GetString("app.jwtSecret"))
 
 // 生成token的函数
 func GenerateToken(userId uint) (string, error) {
-	fmt.Println("jwtSecret", viper.GetString("app.jwtSecret"))
 	jwtExpireTime := viper.GetInt("app.jwtExpireTime")
 	nowTime := time.Now()
 	expireTime := nowTime.Add(time.Duration(jwtExpireTime) * time.Minute)

@@ -1,7 +1,6 @@
 package base
 
 import (
-	"fmt"
 	"ginchat/models"
 	"ginchat/service/base"
 	"ginchat/utils"
@@ -28,10 +27,8 @@ func Login(c *gin.Context) {
 		req.PassWord = utils.Encryption(req.PassWord)
 		user := models.BaseSysUser{UserName: req.UserName, PassWord: req.PassWord}
 		base.GetUserInfo(&user)
-		fmt.Println(user.ID)
 		token, err := utils.GenerateToken(user.ID)
 		if err != nil {
-			fmt.Println(err)
 			utils.ServerError(c, "生成token失败")
 		} else {
 			utils.Success(c, gin.H{

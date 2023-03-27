@@ -15,8 +15,8 @@ type BaseSysUser struct {
 	HeadImg      string `gorm:"comment:'头像'"`
 	Phone        string `gorm:"comment:'手机号'"`
 	Email        string `gorm:"comment:'邮箱'"`
-	status       int    `gorm:"comment:'状态'"`
-	remark       string `gorm:"comment:'备注'"`
+	Status       int    `gorm:"comment:'状态'"`
+	Remark       string `gorm:"comment:'备注'"`
 }
 
 func (table *BaseSysUser) BaseSysUser() string {
